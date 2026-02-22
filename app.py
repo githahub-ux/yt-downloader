@@ -198,7 +198,8 @@ def run_download(job_id, url, quality):
             if total:
                 jobs[job_id]["progress"] = int((total - bytes_remaining) / total * 100)
 
-        yt = YouTube(url, on_progress_callback=on_progress)
+        # "ANDROID" client umgeht Bot-Erkennung auf Servern
+        yt = YouTube(url, on_progress_callback=on_progress, client="ANDROID")
         jobs[job_id]["title"] = yt.title
         filename = f"{job_id}.mp4"
 
